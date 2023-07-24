@@ -8,7 +8,6 @@ public class Order : BaseAuditableEntity
     public Ulid UserId { get; set; }
     public DateTime OrderDate { get; set; }
     public bool IsPaid { get; set; }
-    public decimal TotalPrice { get; set; }
     public virtual ICollection<OrderItem> OrderItems { get; set; }
 
 }
