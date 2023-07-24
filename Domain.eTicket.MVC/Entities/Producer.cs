@@ -1,8 +1,9 @@
-﻿namespace Domain.eTicket.MVC.Entities;
+﻿using Domain.eTicket.MVC.Commons;
 
-public class Producer
+namespace Domain.eTicket.MVC.Entities;
+
+public class Producer : BaseAuditableEntity
 {
-    public int ProducerId { get; set; }
     public string ProducerName { get; set; }
     public string ProducerImage { get; set; }
     public string ProducerBio { get; set; }

@@ -1,5 +1,8 @@
-﻿namespace Domain.eTicket.MVC.Entities;
+﻿using Domain.eTicket.MVC.Commons;
 
-public class Order
+namespace Domain.eTicket.MVC.Entities;
+
+public class Order : BaseAuditableEntity
 {
+
 }
