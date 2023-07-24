@@ -1,10 +1,10 @@
-﻿using Domain.eTicket.MVC.Enums;
+﻿using Domain.eTicket.MVC.Commons;
+using Domain.eTicket.MVC.Enums;
 
 namespace Domain.eTicket.MVC.Entities;
 
-public class Movie
+public class Movie : BaseAuditableEntity
 {
-    public int MovieId { get; set; }
     public string MovieName { get; set; }
     public string MovieDescription { get; set; }
     public decimal MoviePrice { get; set; }

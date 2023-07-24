@@ -1,8 +1,9 @@
-﻿namespace Domain.eTicket.MVC.Entities;
+﻿using Domain.eTicket.MVC.Commons;
 
-public class Cinema
+namespace Domain.eTicket.MVC.Entities;
+
+public class Cinema : BaseAuditableEntity
 {
-    public int CinemaId { get; set; }
     public string CinemaName { get; set; }
     public string CinemaDescription { get; set; }
     public string CinemaLogo { get; set; }
