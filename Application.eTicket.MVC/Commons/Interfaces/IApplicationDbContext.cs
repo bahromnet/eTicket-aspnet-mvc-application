@@ -11,4 +11,5 @@ public interface IApplicationDbContext
     DbSet<Order> Orders { get; }
     DbSet<OrderItem> OrderItems { get; }
     DbSet<Producer> Producers { get; }
+    Task<int> SaveChangesAsybc(CancellationToken cancellationToken = default);
 }

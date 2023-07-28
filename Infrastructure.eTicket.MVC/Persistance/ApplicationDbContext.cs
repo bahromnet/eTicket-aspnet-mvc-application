@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.eTicket.MVC.Persistance;
 
-public class ApplicationDbContext : IApplicationDbContext
+public class ApplicationDbContext : DbContext, IApplicationDbContext
 {
     public DbSet<Actor> Actors { get; set; }
 
