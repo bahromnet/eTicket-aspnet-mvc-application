@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Application.eTicket.MVC\Application.eTicket.MVC.csproj" />
+  </ItemGroup>
+
 </Project>
