@@ -1,5 +1,5 @@
 ﻿namespace Application.eTicket.MVC.UseCases.OrderItem.Responce;
-public class OrderItemQuery
+public class OrderItemResponce
 {
     public Ulid Id { get; set; }
     public Ulid OrderId { get; set; }
