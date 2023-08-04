@@ -9,3 +9,11 @@ public record CreateOrderItemCommand : IRequest<Ulid>
     public decimal Price { get; set; }
     public DateTime ScreeningTime { get; set; }
 }
+
+public class CreateOrderItemCommandHandler : IRequestHandler<CreateOrderItemCommand, Ulid>
+{
+    public Task<Ulid> Handle(CreateOrderItemCommand request, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+}
