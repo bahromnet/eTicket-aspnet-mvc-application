@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Application.eTicket.MVC.UseCases.Permission.Commands.CreatePermission;
-internal class CreatePermissionCommand
+﻿namespace Application.eTicket.MVC.UseCases.Permission.Commands.CreatePermission;
+public class CreatePermissionCommand
 {
 }
