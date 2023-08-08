@@ -1,4 +1,4 @@
 ﻿namespace Application.eTicket.MVC.Commons.JWT.Models;
-internal class TokenResponce
+public class TokenResponce
 {
 }
