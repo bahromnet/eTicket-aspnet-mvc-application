@@ -30,4 +30,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     public DbSet<Permission> Permissions { get; set; }
 
+    public Task<int> SaveChangesAsybc(CancellationToken cancellationToken = default)
+    {
+        throw new NotImplementedException();
+    }
 }
