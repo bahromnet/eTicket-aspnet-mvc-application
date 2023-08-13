@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Application.eTicket.MVC.UseCases.Producer.Commands.CreateProducer;
+namespace Application.eTicket.MVC.UseCases.Producers.Commands.CreateProducer;
 public class CreateProducerCommandValidator : AbstractValidator<CreateProducerCommand>
 {
     public CreateProducerCommandValidator()

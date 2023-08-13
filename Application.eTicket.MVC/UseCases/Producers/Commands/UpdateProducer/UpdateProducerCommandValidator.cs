@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Application.eTicket.MVC.UseCases.Producer.Commands.UpdateProducer;
+namespace Application.eTicket.MVC.UseCases.Producers.Commands.UpdateProducer;
 public class UpdateProducerCommandValidator : AbstractValidator<UpdateProducerCommand>
 {
     public UpdateProducerCommandValidator()

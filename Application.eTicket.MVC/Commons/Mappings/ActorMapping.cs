@@ -1,5 +1,5 @@
-﻿using Application.eTicket.MVC.UseCases.Actor.Commands;
-using Application.eTicket.MVC.UseCases.Actor.Responce;
+﻿using Application.eTicket.MVC.UseCases.Actors.Commands;
+using Application.eTicket.MVC.UseCases.Actors.Responce;
 using AutoMapper;
 using Domain.eTicket.MVC.Entities;
 
