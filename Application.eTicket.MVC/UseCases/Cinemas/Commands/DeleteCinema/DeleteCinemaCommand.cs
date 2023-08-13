@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.eTicket.MVC.UseCases.Cinema.Commands;
+namespace Application.eTicket.MVC.UseCases.Cinemas.Commands;
 public record DeleteCinemaCommand : IRequest
 {
     public Ulid Id { get; set; }

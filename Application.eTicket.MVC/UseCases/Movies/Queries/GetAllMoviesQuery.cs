@@ -1,7 +1,7 @@
 ﻿using Application.eTicket.MVC.UseCases.Movie.Responce;
 using MediatR;
 
-namespace Application.eTicket.MVC.UseCases.Movie.Queries;
+namespace Application.eTicket.MVC.UseCases.Movies.Queries;
 public record GetAllMoviesQuery : IRequest<List<MovieResponce>>;
 
 public class GetAllMoviesQueryHandler : IRequestHandler<GetAllMoviesQuery, List<MovieResponce>>

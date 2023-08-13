@@ -1,4 +1,4 @@
-﻿namespace Application.eTicket.MVC.UseCases.Cinema.Responce;
+﻿namespace Application.eTicket.MVC.UseCases.Cinemas.Responce;
 public class CinemaResponce
 {
     public Ulid Id { get; set; }

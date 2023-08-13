@@ -1,7 +1,7 @@
 ﻿using Domain.eTicket.MVC.Enums;
 using MediatR;
 
-namespace Application.eTicket.MVC.UseCases.Movie.Commands;
+namespace Application.eTicket.MVC.UseCases.Movies.Commands;
 public record CreateMovieCommand : IRequest<Ulid>
 {
     public string MovieName { get; set; }
