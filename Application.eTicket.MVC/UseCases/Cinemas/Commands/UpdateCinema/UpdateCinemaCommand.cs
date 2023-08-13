@@ -1,7 +1,7 @@
 ﻿using Application.eTicket.MVC.UseCases.Cinema.Responce;
 using MediatR;
 
-namespace Application.eTicket.MVC.UseCases.Cinema.Commands;
+namespace Application.eTicket.MVC.UseCases.Cinemas.Commands;
 public record UpdateCinemaCommand : IRequest
 {
     public Ulid Id { get; set; }

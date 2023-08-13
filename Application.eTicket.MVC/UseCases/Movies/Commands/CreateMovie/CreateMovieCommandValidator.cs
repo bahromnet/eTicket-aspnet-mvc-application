@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Application.eTicket.MVC.UseCases.Movie.Commands.CreateMovie;
+namespace Application.eTicket.MVC.UseCases.Movies.Commands.CreateMovie;
 public class CreateMovieCommandValidator : AbstractValidator<CreateMovieCommand>
 {
     public CreateMovieCommandValidator()

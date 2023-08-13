@@ -1,4 +1,4 @@
-﻿using Application.eTicket.MVC.UseCases.Producer.Responce;
+﻿using Application.eTicket.MVC.UseCases.Producers.Responce;
 using MediatR;
 
 namespace Application.eTicket.MVC.UseCases.Producers.Queries;

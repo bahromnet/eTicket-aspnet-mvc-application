@@ -1,7 +1,7 @@
 ﻿using Application.eTicket.MVC.UseCases.Cinema.Responce;
 using MediatR;
 
-namespace Application.eTicket.MVC.UseCases.Cinema.Queries;
+namespace Application.eTicket.MVC.UseCases.Cinemas.Queries;
 public record GetByIdCinemaQuery : IRequest<CinemaResponce>
 {
     public Ulid Id { get; set; }
