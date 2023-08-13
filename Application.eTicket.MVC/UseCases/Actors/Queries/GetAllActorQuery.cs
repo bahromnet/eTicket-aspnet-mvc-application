@@ -1,7 +1,7 @@
 ﻿using Application.eTicket.MVC.UseCases.Actor.Responce;
 using MediatR;
 
-namespace Application.eTicket.MVC.UseCases.Actor.Queries;
+namespace Application.eTicket.MVC.UseCases.Actors.Queries;
 public record GetAllActorQuery : IRequest<List<ActorResponce>>;
 
 public class GetAllActorQueryHandler : IRequestHandler<GetAllActorQuery, List<ActorResponce>>
