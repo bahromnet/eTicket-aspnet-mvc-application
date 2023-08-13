@@ -1,13 +1,10 @@
 ﻿using FluentValidation;
 
-namespace Application.eTicket.MVC.UseCases.Actor.Commands.UpdateActor;
-public class UpdateActorCommandValidator : AbstractValidator<UpdateActorCommand>
+namespace Application.eTicket.MVC.UseCases.Actors.Commands.CreateActor;
+public class CreateActorCommandValidator : AbstractValidator<CreateActorCommand>
 {
-    public UpdateActorCommandValidator()
+    public CreateActorCommandValidator()
     {
-        RuleFor(command => command.Id)
-            .NotEmpty().WithMessage("Actor ID is required.");
-
         RuleFor(command => command.ActorName)
             .NotEmpty().WithMessage("Actor name is required.")
             .MaximumLength(100).WithMessage("Actor name must not exceed 100 characters.");

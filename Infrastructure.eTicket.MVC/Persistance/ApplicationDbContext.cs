@@ -29,9 +29,4 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Role> Roles { get; set; }
 
     public DbSet<Permission> Permissions { get; set; }
-
-    public Task<int> SaveChangesAsybc(CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
 }
