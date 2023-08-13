@@ -1,4 +1,4 @@
-﻿namespace Application.eTicket.MVC.UseCases.Producer.Responce;
+﻿namespace Application.eTicket.MVC.UseCases.Producers.Responce;
 public class ProducerResponce
 {
     public Ulid Id { get; set; }

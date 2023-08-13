@@ -1,7 +1,7 @@
 ﻿using Application.eTicket.MVC.UseCases.Producer.Responce;
 using MediatR;
 
-namespace Application.eTicket.MVC.UseCases.Producer.Queries;
+namespace Application.eTicket.MVC.UseCases.Producers.Queries;
 public record GetByIdProducerQuery : IRequest<ProducerResponce>
 {
     public Ulid Id { get; set; }

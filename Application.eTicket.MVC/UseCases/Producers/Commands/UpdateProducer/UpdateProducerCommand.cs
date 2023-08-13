@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Application.eTicket.MVC.UseCases.Producer.Commands;
+namespace Application.eTicket.MVC.UseCases.Producers.Commands;
 public record UpdateProducerCommand : IRequest
 {
     public Ulid Id { get; set; }
