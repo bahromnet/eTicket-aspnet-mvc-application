@@ -1,4 +1,4 @@
-﻿using Application.eTicket.MVC.UseCases.Movie.Responce;
+﻿using Application.eTicket.MVC.UseCases.Movies.Responce;
 using MediatR;
 
 namespace Application.eTicket.MVC.UseCases.Movies.Queries;
