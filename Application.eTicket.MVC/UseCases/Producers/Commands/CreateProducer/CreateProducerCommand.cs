@@ -9,7 +9,7 @@ namespace Application.eTicket.MVC.UseCases.Producers.Commands;
 public record CreateProducerCommand : IRequest<Ulid>
 {
     public string ProducerName { get; }
-    public IFormFile ProducerImage { get; }
+    public IFormFile? ProducerImage { get; }
     public string ProducerBio { get; }
 }
 
