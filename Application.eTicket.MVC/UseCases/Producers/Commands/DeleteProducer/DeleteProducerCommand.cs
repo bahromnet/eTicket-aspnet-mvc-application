@@ -3,7 +3,7 @@
 namespace Application.eTicket.MVC.UseCases.Producers.Commands;
 public record DeleteProducerCommand : IRequest
 {
-    public Ulid Id { get; set; }
+    public Ulid Id { get; }
 }
 
 public class DeleteProducerCommandHandler : IRequestHandler<DeleteProducerCommand>
