@@ -40,6 +40,7 @@ public class CreateActorCommandHandler : IRequestHandler<CreateActorCommand, Uli
                 await request.ActorImage.CopyToAsync(fs);
                 actor.ActorImage = actorImagePath;
             };
+            actor.ActorBio = request.ActorBio;
         }
         await _context.Actors.AddAsync(actor, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
