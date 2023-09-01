@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿using Application.eTicket.MVC.Commons.Exceptions;
+using Application.eTicket.MVC.Commons.Interfaces;
+using Domain.eTicket.MVC.Entities;
+using MediatR;
 
 namespace Application.eTicket.MVC.UseCases.Cinemas.Commands;
 public record DeleteCinemaCommand : IRequest
@@ -8,8 +11,19 @@ public record DeleteCinemaCommand : IRequest
 
 public class DeleteCinemaCommandHandler : IRequestHandler<DeleteCinemaCommand>
 {
-    public Task Handle(DeleteCinemaCommand request, CancellationToken cancellationToken)
+    private readonly IApplicationDbContext _context;
+
+    public DeleteCinemaCommandHandler(IApplicationDbContext context)
     {
-        throw new NotImplementedException();
+        _context = context;
+    }
+
+    public async Task Handle(DeleteCinemaCommand request, CancellationToken cancellationToken)
+    {
+        var foundCinema = await _context.Cinemas.FindAsync(request.Id);
+        if (foundCinema is null)
+            throw new NotFoundException(nameof(Cinema), request.Id);
+
+
     }
 }
