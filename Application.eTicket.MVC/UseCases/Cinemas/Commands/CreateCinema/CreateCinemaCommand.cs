@@ -1,9 +1,9 @@
 ﻿using Application.eTicket.MVC.Commons.Interfaces;
 using AutoMapper;
-using Castle.Core.Configuration;
 using Domain.eTicket.MVC.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace Application.eTicket.MVC.UseCases.Cinemas.Commands;
 public record CreateCinemaCommand : IRequest<Ulid>
@@ -33,8 +33,21 @@ public class CreateCinemaCommandHandler : IRequestHandler<CreateCinemaCommand, U
         if (cinema is not null)
         {
             cinema.Id = Ulid.NewUlid();
+            cinema.CinemaName = request.CinemaName;
+            cinema.CinemaDescription = request.CinemaDescription;
+            cinema.CinemaLocation = request.CinemaLocation;
 
+            var cinemaImage = _config["CinemaImages"];
+            var fileName = cinema.Id + Path.GetExtension(request.CinemaLogo.FileName);
+            var cinemaImagePath = Path.Combine(cinemaImage, fileName);
+            using (var fs = new FileStream(cinemaImagePath, FileMode.Create))
+            {
+                await request.CinemaLogo.CopyToAsync(fs);
+                cinema.CinemaLogo = cinemaImagePath;
+            }
         }
+        await _context.Cinemas.AddAsync(cinema, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
         return cinema.Id;
     }
 }
