@@ -24,6 +24,7 @@ public class DeleteCinemaCommandHandler : IRequestHandler<DeleteCinemaCommand>
         if (foundCinema is null)
             throw new NotFoundException(nameof(Cinema), request.Id);
 
-
+        _context.Cinemas.Remove(foundCinema);
+        await _context.SaveChangesAsync(cancellationToken);
     }
 }
