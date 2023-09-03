@@ -45,5 +45,8 @@ public class UpdateCinemaCommandHandler : IRequestHandler<UpdateCinemaCommand>
                 foundCinema.CinemaLogo = cinemaLogoPath;
             }
         }
+        foundCinema.CinemaLocation = request.CinemaLocation;
+
+        await _context.SaveChangesAsync(cancellationToken);
     }
 }
