@@ -37,13 +37,13 @@ public class CreateCinemaCommandHandler : IRequestHandler<CreateCinemaCommand, U
             cinema.CinemaDescription = request.CinemaDescription;
             cinema.CinemaLocation = request.CinemaLocation;
 
-            var cinemaImage = _config["CinemaImages"];
-            var fileName = cinema.Id + Path.GetExtension(request.CinemaLogo.FileName);
-            var cinemaImagePath = Path.Combine(cinemaImage, fileName);
-            using (var fs = new FileStream(cinemaImagePath, FileMode.Create))
+            var cinemaLogoConfig = _config["CinemaImages"];
+            var cinemaLogoName = cinema.Id + Path.GetExtension(request.CinemaLogo.FileName);
+            var cinemaLogoPath = Path.Combine(cinemaLogoConfig, cinemaLogoName);
+            using (var fs = new FileStream(cinemaLogoPath, FileMode.Create))
             {
                 await request.CinemaLogo.CopyToAsync(fs);
-                cinema.CinemaLogo = cinemaImagePath;
+                cinema.CinemaLogo = cinemaLogoPath;
             }
         }
         await _context.Cinemas.AddAsync(cinema, cancellationToken);
