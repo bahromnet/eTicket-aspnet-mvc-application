@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.eTicket.MVC.UseCases.Movies.Commands.CreateMovie;
 public class CreateMovieCommandValidator : AbstractValidator<CreateMovieCommand>
@@ -35,23 +36,23 @@ public class CreateMovieCommandValidator : AbstractValidator<CreateMovieCommand>
             .NotEmpty().WithMessage("Producer ID is required.");
     }
 
-    private bool BeAValidImage(string filePath)
+    private bool BeAValidImage(IFormFile filePath)
     {
-        if (string.IsNullOrEmpty(filePath))
+        if (string.IsNullOrEmpty(filePath.FileName))
             return false;
 
         var allowedFormats = new[] { ".jpg", ".jpeg", ".png" };
-        var ext = Path.GetExtension(filePath);
+        var ext = Path.GetExtension(filePath.FileName);
         return allowedFormats.Contains(ext, StringComparer.OrdinalIgnoreCase);
     }
 
-    private bool BeAValidImageSize(string filePath)
+    private bool BeAValidImageSize(IFormFile filePath)
     {
-        if (string.IsNullOrEmpty(filePath))
+        if (string.IsNullOrEmpty(filePath.FileName))
             return false;
 
         const int maxSize = 5 * 1024 * 1024; // 5MB
-        var fileInfo = new FileInfo(filePath);
+        var fileInfo = new FileInfo(filePath.FileName);
         return fileInfo.Length <= maxSize;
     }
 }
