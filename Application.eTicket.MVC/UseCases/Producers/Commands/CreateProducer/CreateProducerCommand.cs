@@ -32,7 +32,7 @@ public class CreateProducerCommandHandler : IRequestHandler<CreateProducerComman
         if (request.ProducerImage is not null)
         {
             producer.Id = Ulid.NewUlid();
-            var producerImage = _configuration["ProducerImagePath"];
+            var producerImage = _configuration["ProducerImages"];
             string fileName = producer.Id + Path.GetExtension(request.ProducerImage.FileName);
             string producerImagePath = Path.Combine(producerImage, fileName);
             using (var fs = new FileStream(producerImagePath, FileMode.Create))

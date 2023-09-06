@@ -1,13 +1,19 @@
 ﻿using Application.eTicket.MVC.Commons.Interfaces;
+using Application.eTicket.MVC.Commons.Models;
 using Application.eTicket.MVC.UseCases.Actors.Responce;
 using AutoMapper;
+using Domain.eTicket.MVC.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.eTicket.MVC.UseCases.Actors.Queries;
-public record GetAllActorQuery : IRequest<List<ActorResponce>>;
+public record GetAllActorQuery : IRequest<PaginatedList<ActorResponce>>
+{
+    public string SearchingText { get; set; }
+    public int PageNumber { get; set; } = 1;
+    public int PageSize { get; set; } = 10;
+}
 
-public class GetAllActorQueryHandler : IRequestHandler<GetAllActorQuery, List<ActorResponce>>
+public class GetAllActorQueryHandler : IRequestHandler<GetAllActorQuery, PaginatedList<ActorResponce>>
 {
     private readonly IApplicationDbContext _context;
     private readonly IMapper _mapper;
@@ -17,10 +23,27 @@ public class GetAllActorQueryHandler : IRequestHandler<GetAllActorQuery, List<Ac
         _mapper = mapper;
     }
 
-    public async Task<List<ActorResponce>> Handle(GetAllActorQuery request, CancellationToken cancellationToken)
+    public async Task<PaginatedList<ActorResponce>> Handle(GetAllActorQuery request, CancellationToken cancellationToken)
     {
-        var entities = await _context.Roles.ToListAsync(cancellationToken);
-        var result = _mapper.Map<List<ActorResponce>>(entities);
+        int pageNumber = request.PageNumber;
+        int pageSize = request.PageSize;
+        string searchingText = request.SearchingText.Trim();
+
+        var allActors = _context.Actors.AsQueryable();
+
+        if (!string.IsNullOrEmpty(searchingText))
+        {
+            allActors = allActors.Where(actor
+                => actor.ActorName.ToLower().Contains(searchingText.ToLower())
+                || actor.ActorBio.ToLower().Contains(searchingText.ToLower()));
+        }
+
+        var paginatedActors = await PaginatedList<Actor>.CreateAsync(allActors, pageNumber, pageSize, cancellationToken);
+
+        var actorsAfterMapping = _mapper.Map<List<ActorResponce>>(paginatedActors.Items);
+
+        var result = new PaginatedList<ActorResponce>(actorsAfterMapping, paginatedActors.TotalCount, pageNumber, pageSize);
+
         return result;
     }
 }

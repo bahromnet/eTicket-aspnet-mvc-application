@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace Application.eTicket.MVC.UseCases.Users.Commands.CreateUser;
 public record CreateUserCommand : IRequest<Ulid>
@@ -8,7 +9,7 @@ public record CreateUserCommand : IRequest<Ulid>
     public string UserName { get; }
     public string Phone { get; }
     public string Email { get; }
-    public string? Picture { get; }
+    public IFormFile? Picture { get; }
     public List<string>? Roles { get; }
 }
 
