@@ -32,7 +32,7 @@ public class CreateActorCommandHandler : IRequestHandler<CreateActorCommand, Uli
         if (request.ActorImage is not null)
         {
             actor.Id = Ulid.NewUlid();
-            var actorImage = _configuration["ActorImagePath"];
+            var actorImage = _configuration["ActorImages"];
             string fileName = actor.Id + Path.GetExtension(request.ActorImage.FileName);
             string actorImagePath = Path.Combine(actorImage, fileName);
             using (var fs = new FileStream(actorImagePath, FileMode.Create))
