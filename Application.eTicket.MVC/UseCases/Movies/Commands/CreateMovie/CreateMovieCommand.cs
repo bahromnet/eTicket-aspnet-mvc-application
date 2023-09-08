@@ -38,13 +38,6 @@ public class CreateMovieCommandHandler : IRequestHandler<CreateMovieCommand, Uli
         if (movieAfterMapping is not null)
         {
             movieAfterMapping.Id = Ulid.NewUlid();
-            movieAfterMapping.MovieName = request.MovieName;
-            movieAfterMapping.MovieDescription = request.MovieDescription;
-            movieAfterMapping.MoviePrice = request.MoviePrice;
-            movieAfterMapping.StartDate = request.StartDate;
-            movieAfterMapping.EndDate = request.EndDate;
-            movieAfterMapping.MovieCategory = request.MovieCategory;
-            movieAfterMapping.ProducerId = request.ProducerId;
             if (movieAfterMapping.MovieImage is not null)
             {
                 var movieImageConfig = _config["MovieImages"];

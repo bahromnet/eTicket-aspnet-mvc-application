@@ -30,14 +30,11 @@ public class CreateOrderItemCommandHandler : IRequestHandler<CreateOrderItemComm
         if (orderItemAfterMapping is not null)
         {
             orderItemAfterMapping.Id = Ulid.NewUlid();
-            orderItemAfterMapping.OrderId = request.OrderId;
-            orderItemAfterMapping.MovieId = request.MovieId;
-            orderItemAfterMapping.SeatNumber = request.SeatNumber;
-            orderItemAfterMapping.Price = request.Price;
-            orderItemAfterMapping.ScreeningTime = request.ScreeningTime;
         }
         await _context.OrderItems.AddAsync(orderItemAfterMapping, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
+
+
         return orderItemAfterMapping.Id;
     }
 }

@@ -33,10 +33,6 @@ public class CreateCinemaCommandHandler : IRequestHandler<CreateCinemaCommand, U
         if (cinema is not null)
         {
             cinema.Id = Ulid.NewUlid();
-            cinema.CinemaName = request.CinemaName;
-            cinema.CinemaDescription = request.CinemaDescription;
-            cinema.CinemaLocation = request.CinemaLocation;
-
             var cinemaLogoConfig = _config["CinemaImages"];
             var cinemaLogoName = cinema.Id + Path.GetExtension(request.CinemaLogo.FileName);
             var cinemaLogoPath = Path.Combine(cinemaLogoConfig, cinemaLogoName);

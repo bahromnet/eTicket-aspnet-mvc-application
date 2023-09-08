@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿using Application.eTicket.MVC.Commons.Interfaces;
+using AutoMapper;
+using Domain.eTicket.MVC.Entities;
+using MediatR;
 
 namespace Application.eTicket.MVC.UseCases.Orders.Commands;
 public record CreateOrderCommand : IRequest<Ulid>
@@ -10,8 +13,18 @@ public record CreateOrderCommand : IRequest<Ulid>
 
 public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Ulid>
 {
+    private readonly IApplicationDbContext _context;
+    private readonly IMapper _mapper;
+
+    public CreateOrderCommandHandler(IApplicationDbContext context, IMapper mapper)
+    {
+        _context = context;
+        _mapper = mapper;
+    }
+
     public Task<Ulid> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        Order orderAfterMapping = _mapper.Map<Order>(request);
+
     }
 }
