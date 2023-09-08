@@ -1,3 +1,6 @@
+using Application.eTicket.MVC;
+using Infrastructure.eTicket.MVC;
+
 namespace eTicket.MVC
 {
     public class Program
@@ -5,6 +8,9 @@ namespace eTicket.MVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddApplication();
+            builder.Services.AddInfrastructure(builder.Configuration);
 
             builder.Services.AddControllersWithViews();
 
