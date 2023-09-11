@@ -23,9 +23,10 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Uli
         _mapper = mapper;
     }
 
-    public Task<Ulid> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
+    public async Task<Ulid> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
         Order orderAfterMapping = _mapper.Map<Order>(request);
 
+        return orderAfterMapping.Id;
     }
 }
