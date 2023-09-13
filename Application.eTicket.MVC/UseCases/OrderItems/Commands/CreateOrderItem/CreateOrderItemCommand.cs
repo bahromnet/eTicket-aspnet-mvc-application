@@ -33,8 +33,6 @@ public class CreateOrderItemCommandHandler : IRequestHandler<CreateOrderItemComm
         }
         await _context.OrderItems.AddAsync(orderItemAfterMapping, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
-
-
         return orderItemAfterMapping.Id;
     }
 }
