@@ -43,6 +43,9 @@ public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Uli
                     Price = movieOrder.Price,
                     ScreeningTime = movieOrder.ScreeningTime
                 };
+                var orderItemId = await _mediatr.Send(createOrderItemCommand, cancellationToken);
+                var orderItem = await _context.OrderItems.FindAsync(orderItemId, cancellationToken);
+                orderAfterMapping.OrderItems.Add(orderItem);
             }
         }
         await _context.Orders.AddAsync(orderAfterMapping, cancellationToken);
