@@ -1,4 +1,7 @@
-﻿using MediatR;
+﻿using Application.eTicket.MVC.Commons.Exceptions;
+using Application.eTicket.MVC.Commons.Interfaces;
+using Domain.eTicket.MVC.Entities;
+using MediatR;
 
 namespace Application.eTicket.MVC.UseCases.Orders.Commands;
 public record DeleteOrderCommand : IRequest
@@ -8,8 +11,17 @@ public record DeleteOrderCommand : IRequest
 
 public class DeleteOrderCommandHandler : IRequestHandler<DeleteOrderCommand>
 {
-    public Task Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
+    private readonly IApplicationDbContext _context;
+
+    public DeleteOrderCommandHandler(IApplicationDbContext context)
+        => _context = context;
+
+    public async Task Handle(DeleteOrderCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var foundOrder = await _context.Orders.FindAsync(new object?[] { request.Id, cancellationToken }, cancellationToken)
+            ?? throw new NotFoundException(nameof(Order), request.Id);
+
+        _context.Orders.Remove(foundOrder);
+        await _context.SaveChangesAsync(cancellationToken);
     }
 }
